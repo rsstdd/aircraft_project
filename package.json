@@ -1,0 +1,25 @@
+{
+  "name": "aircraft_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsstdd/aircraft_project.git"
+  },
+  "keywords": [],
+  "author": "Ross Todd <rosstod@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rsstdd/aircraft_project/issues"
+  },
+  "homepage": "https://github.com/rsstdd/aircraft_project#readme",
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-config-ryansobol": "^9.1.1",
+    "foreman": "^2.0.0"
+  }
+}
