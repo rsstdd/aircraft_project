@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "heroku-postbuild": "knex migrate:latest",
+    "knex": "knex",
+    "lint": "eslint  --ignore-pattern public/js/vendor",
+    "nf": "nf start",
+    "start": "nodemon server.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,13 +23,25 @@
   },
   "homepage": "https://github.com/rsstdd/aircraft_project#readme",
   "devDependencies": {
+    "dotenv": "^2.0.0",
     "eslint": "^3.8.1",
     "eslint-config-ryansobol": "^9.1.1",
     "foreman": "^2.0.0"
   },
   "dependencies": {
+    "bcrypt-as-promised": "^1.1.0",
+    "body-parser": "^1.15.2",
+    "boom": "^4.2.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "express-validation": "^1.0.1",
+    "humps": "^2.0.0",
+    "joi": "^9.2.0",
+    "jsonwebtoken": "^7.1.9",
     "knex": "^0.12.6",
-    "pg": "^6.1.0"
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0",
+    "pg": "^6.1.0",
+    "request": "^2.76.0"
   }
 }
