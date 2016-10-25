@@ -21,5 +21,10 @@
     "eslint": "^3.8.1",
     "eslint-config-ryansobol": "^9.1.1",
     "foreman": "^2.0.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "pg": "^6.1.0"
   }
 }
