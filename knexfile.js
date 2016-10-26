@@ -3,7 +3,7 @@
 module.exports = {
   development: {
     client: 'pg',
-    connection: ''
+    connection: 'postgres://localhost/aircraft_project_dev'
   },
 
   test: {
