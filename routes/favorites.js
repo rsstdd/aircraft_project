@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken');
 const knex = require('../knex');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 
+const ev = require('express-validation');
+const validations = require('../validations/favorites');
+
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
@@ -47,18 +50,14 @@ router.get('/favorites/:id', authorize, (req, res, next) => {
     });
 });
 
-router.post('/favorites/', authorize, (req, res, next) => {
+router.post('/favorites/', authorize, ev(validations.post), (req, res, next) => {
   const { userId } = req.token;
   const { aircraftId } = req.body;
 
-  if (Number.isNaN(Number.parseInt(aircraftId))) {
-    return next(boom.create(400, 'Book ID must be an integer'));
-  }
+  const favorite = { aircraftId, userId };
 
-  const favorite = { bookId, userId };
-
-  knex('books')
-   .where('id', bookId)
+  knex('airplanes')
+   .where('id', aircraftId)
    .first()
    .then((row) => {
      if (!row) {
@@ -81,16 +80,16 @@ router.post('/favorites/', authorize, (req, res, next) => {
     });
 });
 
-router.delete('/favorites', authorize, (req, res, next) => {
+router.delete('/favorites', authorize, ev(validations.delete), (req, res, next) => {
   let favorite;
-  const  { bookId }  = req.body;
+  const  { aircraftId } = req.body;
 
-  if (isNaN(Number.parseInt(bookId))) {
+  if (isNaN(Number.parseInt(aircraftId))) {
     return next(boom.create(400, 'Book ID must be an integer'));
   }
 
   knex('favorites')
-   .where('book_id', bookId)
+   .where('aircraft_id', aircraftId)
    .first()
    .then((row) => {
      if (!row) {
@@ -101,7 +100,7 @@ router.delete('/favorites', authorize, (req, res, next) => {
 
      return knex('favorites')
         .del()
-        .where('book_id', bookId);
+        .where('aircraft_id', aircraftId);
    })
     .then(() => {
       delete favorite.id;
