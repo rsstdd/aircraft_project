@@ -8,20 +8,12 @@ const knex = require('../knex');
 const { camelizeKeys } = require('humps');
 
 const ev = require('express-validation');
-const validations = require('../validations/users');
+const validations = require('../validations/token');
 
 const router = express.Router();
 
 router.post('/token', ev(validations.post), (req, res, next) => {
   const { email, password } = req.body;
-
-  // if (!email || !email.trim()) {
-  //   return next(boom.create(400, 'Email must not be blank'));
-  // }
-  //
-  // if (!password || password.length < 8) {
-  //   return next(boom.create(400, 'Password must not be blank'));
-  // }
 
   let user;
 

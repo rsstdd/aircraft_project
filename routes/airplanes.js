@@ -5,30 +5,33 @@ const boom = require('boom');
 const knex = require('../knex');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 
+const ev = require('express-validation');
+const validations = require('../validations/airplanes');
+
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-router.get('/books', (_req, res, next) => {
-  knex('books')
-    .orderBy('title')
+router.get('/aircraft', (_req, res, next) => {
+  knex('airplanes')
+    .orderBy('name')
     .then((rows) => {
-      const books = camelizeKeys(rows);
+      const airplane = camelizeKeys(rows);
 
-      res.send(books);
+      res.send(airplane);
     })
     .catch((err) => {
       next(err);
     });
 });
 
-router.get('/books/:id', (req, res, next) => {
+router.get('/aircraft/:id', (req, res, next) => {
   const id = Number.parseInt(req.params.id);
 
   if (Number.isNaN(id)) {
     return next();
   }
 
-  knex('books')
+  knex('airplanes')
     .where('id', req.params.id)
     .first()
     .then((row) => {
@@ -36,56 +39,39 @@ router.get('/books/:id', (req, res, next) => {
         throw boom.create(404, 'Not Found');
       }
 
-      const book = camelizeKeys(row);
+      const aircraft = camelizeKeys(row);
 
-      res.send(book);
+      res.send(aircraft);
     })
     .catch((err) => {
       next(err);
     });
 });
 
-router.post('/books', (req, res, next) => {
-  const { title, author, genre, description, coverUrl } = req.body;
+router.post('/aircraft', ev(validations.post), (req, res, next) => {
+  const { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl } = req.body;
+  const insertPlane = { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl };
 
-  if (!title || !title.trim()) {
-    return next(boom.create(400, 'Title must not be blank'));
-  }
-  if (!author || !author.trim()) {
-    return next(boom.create(400, 'Author must not be blank'));
-  }
-  if (!genre || !genre.trim()) {
-    return next(boom.create(400, 'Genre must not be blank'));
-  }
-  if (!description || !description.trim()) {
-    return next(boom.create(400, 'Description must not be blank'));
-  }
-  if (!coverUrl || !coverUrl.trim()) {
-    return next(boom.create(400, 'Cover URL must not be blank'));
-  }
-
-  const insertBook = { title, author, genre, description, coverUrl };
-
-  knex('books')
-    .insert(decamelizeKeys(insertBook), '*')
+  knex('airplanes')
+    .insert(decamelizeKeys(insertPlane), '*')
     .then((rows) => {
-      const book = camelizeKeys(rows[0]);
+      const plane = camelizeKeys(rows[0]);
 
-      res.send(book);
+      res.send(plane);
     })
     .catch((err) => {
       next(err);
     });
 });
 
-router.patch('/books/:id', (req, res, next) => {
+router.patch('/aircraft/:id', ev(validations.patch), (req, res, next) => {
   const id = Number.parseInt(req.params.id);
 
   if (Number.isNaN(id)) {
     return next();
   }
 
-  knex('books')
+  knex('airplanes')
     .where('id', id)
     .first()
     .then((book) => {
@@ -93,31 +79,39 @@ router.patch('/books/:id', (req, res, next) => {
         throw boom.create(404, 'Not Found');
       }
 
-      const { title, author, genre, description, coverUrl } = req.body;
-      const updateBook = {};
+      const { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl } = req.body;
+      const updateAircraft = {};
 
-      if (title || title.trim()) { // says the trim is better
-        updateBook.title = title;
-      }
+      // if (name || name.trim()) { // says the trim is better
+      //   updateAircraft.name = name;
+      // }
+      // if (!isNaN(yearInService)) {
+      //   updateAircraft.yearInService = yearInService;
+      // }
+      // if (countryOfOrigin) {
+      //   updateAircraft.countryOfOrigin = countryOfOrigin;
+      // }
+      // if (operators || operators.trim()) {
+      //   updateAircraft.operators = operators;
+      // }
+      // if (!isNaN(maxSpeed)) {
+      //   updateAircraft.maxSpeed = maxSpeed;
+      // }
+      // if (!isNaN(ceiling)) {
+      //   updateAircraft.maxRange = ceiling;
+      // }
+      // if (!isNaN(maxRange)) {
+      //   updateAircraft.maxRange = maxRange;
+      // }
+      // if (engines || engines.trim()) {
+      //   updateAircraft.maxSpeed = engines;
+      // }
+      // if (imgUrl || imgUrl.trim()) {
+      //   updateAircraft.maxRange = imgUrl;
+      // }
 
-      if (author) {
-        updateBook.author = author;
-      }
-
-      if (genre) {
-        updateBook.genre = genre;
-      }
-
-      if (description) {
-        updateBook.description = description;
-      }
-
-      if (coverUrl) {
-        updateBook.coverUrl = coverUrl;
-      }
-
-      return knex('books')
-        .update(decamelizeKeys(updateBook), '*')
+      return knex('airplanes')
+        .update(decamelizeKeys(updateAircraft), '*')
         .where('id', req.params.id);
     })
     .then((rows) => {
@@ -130,7 +124,7 @@ router.patch('/books/:id', (req, res, next) => {
     });
 });
 
-router.delete('/books/:id', (req, res, next) => {
+router.delete('/airplanes/:id', (req, res, next) => {
   let book;
   const id = Number.parseInt(req.params.id);
 
@@ -138,7 +132,7 @@ router.delete('/books/:id', (req, res, next) => {
     return next();
   }
 
-  knex('books')
+  knex('airplanes')
     .where('id', id)
     .first()
     .then((row) => {
@@ -148,7 +142,7 @@ router.delete('/books/:id', (req, res, next) => {
 
       book = camelizeKeys(row);
 
-      return knex('books')
+      return knex('airplanes')
         .del()
         .where('id', id)
     })

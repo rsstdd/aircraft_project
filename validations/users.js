@@ -8,12 +8,12 @@ module.exports.post = {
     firstName: Joi.string()
       .label('First Name')
       .required()
-      .trim()
+      .trim(),
 
     lastName: Joi.string()
       .label('First Name')
       .required()
-      .trim()
+      .trim(),
 
     email: Joi.string()
       .label('Email')

@@ -25,9 +25,9 @@ router.get('/favorites', authorize, (req, res, next) => {
   const { userId } = req.token;
 
   knex('favorites')
-    .innerJoin('books', 'books.id', 'favorites.book_id')
+    .innerJoin('airplanes', 'airplanes.id', 'favorites.aircraft_id')
     .where('favorites.user_id', userId)
-    .orderBy('books.title', 'ASC')
+    .orderBy('airplanes.name', 'ASC')
     .then((rows) => {
       const favorites = camelizeKeys(rows);
 
@@ -40,7 +40,7 @@ router.get('/favorites', authorize, (req, res, next) => {
 
 router.get('/favorites/:id', authorize, (req, res, next) => {
   knex('favorites')
-    .where('book_id', req.query.bookId)
+    .where('aircraft_id', req.query.bookId)
     .then((favorites) => res.send(favorites.length > 0))
     .catch((err) => {
       next(err);
@@ -49,9 +49,9 @@ router.get('/favorites/:id', authorize, (req, res, next) => {
 
 router.post('/favorites/', authorize, (req, res, next) => {
   const { userId } = req.token;
-  const { bookId } = req.body;
+  const { aircraftId } = req.body;
 
-  if (Number.isNaN(Number.parseInt(bookId))) {
+  if (Number.isNaN(Number.parseInt(aircraftId))) {
     return next(boom.create(400, 'Book ID must be an integer'));
   }
 
