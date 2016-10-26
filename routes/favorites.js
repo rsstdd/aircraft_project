@@ -43,7 +43,7 @@ router.get('/favorites', authorize, (req, res, next) => {
 
 router.get('/favorites/:id', authorize, (req, res, next) => {
   knex('favorites')
-    .where('aircraft_id', req.query.bookId)
+    .where('aircraft_id', req.query.aircraftId)
     .then((favorites) => res.send(favorites.length > 0))
     .catch((err) => {
       next(err);
