@@ -42,6 +42,16 @@ app.use((req, res, next) => {
   res.sendStatus(406);
 });
 
+const users = require('./routes/users');
+const token = require('./routes/token');
+const favorites = require('./routes/favorites');
+const airplanes = require('./routes/airplanes');
+
+app.use(users);
+app.use(token);
+app.use(favorites);
+app.use(airplanes);
+
 app.use((_req, res) => {
   res.sendStatus(404);
 });
