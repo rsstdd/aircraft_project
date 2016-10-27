@@ -1,121 +1,114 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Aircraft_Project</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/app.css">
-    <link href="https://fonts.googleapis.com/css?family=Marcellus+SC|Old+Standard+TT" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
-  <body>
-    <header class="row">
-      <div class="navbar">
-      <nav class="blue-grey darken-1">
-        <div class="nav-wrapper">
-          <a class="brand-logo center" data-activates="mobileNav">
-            <span>
-              <img class="logo-png" src="./images/aircraft_logo.png" />
-            </span>
-            <span class="logo-text"></span>
-          </a>
-
-          <ul id="mobileNav" class="side-nav">
-            <li><a href="/index.html"></a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    </header>
-
-    <main>
-      <div class="hero">
-        <div class="container">
-          <div class="caption center-align">
-            <h3>Check out some of My Favorite WWII Era Military Aircraft!</h3>
-            <h5 class="light dark-text text-lighten-3">Register to Start Your Own Collection</h5>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Aircraft_Project</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+      <link type="text/css" rel="stylesheet" href="./css/app.css">
+      <link href="https://fonts.googleapis.com/css?family=Marcellus+SC|Old+Standard+TT" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+      <header class="row">
+        <div class="navbar">
+        <nav class="blue-grey darken-1">
+          <div class="nav-wrapper">
+            <a class="brand-logo center" data-activates="mobileNav">
+              <span>
+                <img class="logo-png" src="./images/aircraft_logo.png" />
+              </span>
+            </a>
           </div>
-          <div class="row">
-            <a class="col offset-s1 s5 z-depth-2 waves-effect waves-light btn modal-trigger reg-btn" href="#modal1">Login or Register</a>
-            <a class="col offset-s1 s5 z-depth-2 waves-effect waves-light btn reg-btn" href="/aircraft.html">See the Collection</a>
-          </div>
-          <form id="signUpForm">
-            <div id="modal1" class="modal z-depth-5">
-                <div class="modal-content">
-                  <h4>Login or Register</h4>
-                  <div class="row">
-                    <form class="col s12">
+        </nav>
+      </div>
+      </header>
+
+      <main>
+        <div class="hero">
+          <div class="container">
+            <div class="caption center-align">
+              <h3>Check out some of My Favorite WWII Era Military Aircraft!</h3>
+              <h5 class="light dark-text text-lighten-3">Register to Start Your Own Collection</h5>
+            </div>
+            <div class="row">
+              <a class="col offset-s1 s5 z-depth-2 waves-effect waves-light btn modal-trigger reg-btn blue-grey lighten-2" href="#modal1">Login or Register</a>
+              <a class="col offset-s1 s5 z-depth-2 waves-effect waves-light btn reg-btn blue-grey lighten-2" href="collection.html">See the Collection</a>
+            </div>
+            <form id="signUpForm">
+              <div id="modal1" class="modal z-depth-5">
+                  <div class="modal-content">
+                    <h4>Login or Register</h4>
+                    <div class="row">
                       <div class="row modal-form-row">
+                        <div class="row">
+                          <div class="input-field col s12 modal-form-row">
+                            <input id="firstName" type="First Name" class="validate">
+                            <label for="First Name" data-error="wrong" data-success="You Got it">First Name</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12 modal-form-row">
+                            <input id="lastName" type="First Name" class="validate">
+                            <label for="Last Name" data-error="wrong" data-success="You Got it">Last Name</label>
+                          </div>
+                        </div>
                         <div class="input-field col s12">
                           <input id="email" type="email" class="validate">
                           <label for="Email" data-error="Enter a Valid Email" data-success="You Got it">Email</label>
                         </div>
-                        <div class="input-field col s12">
-                          <input id="firstName" type="First Name" class="validate">
-                          <label for="First Name" data-error="wrong" data-success="You Got it">First Name</label>
-                        </div>
-                        <div class="input-field col s12">
-                          <input id="lastName" type="First Name" class="validate">
-                          <label for="Last Name" data-error="wrong" data-success="You Got it">Last Name</label>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input id="password" type="password" class="validate">
+                            <label for="password" data-error="wrong" data-success="right">Password</label>
+                          </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <input id="password" type="password" class="validate">
-                          <label for="password" data-error="wrong" data-success="right">Password</label>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                        </div>
-                      </div>
-                    </form>
+                    </div>
                   </div>
+                  <div class="modal-footer card-action">
+                  <button id="register" class="modal-action waves-effect waves-teal darken-3 btn-flat waves-effect waves-light btn-large" type="submit" name="action">
+                    Register
+                  </button>
+                  <button id="logIn" class="modal-action waves-effect waves-teal darken-3 btn-flat center waves-effect waves-light btn-large" type="submit" name="action">
+                    Log in
+                  </button>
                 </div>
-                <div class="modal-footer card-action">
-                <button id="register" class="modal-action waves-effect waves-teal darken-3 btn-flat waves-effect waves-light btn-large" type="submit" name="action">
-                  Register
-                </button>
-                <button id="logIn" class="modal-action waves-effect waves-teal darken-3 btn-flat center waves-effect waves-light btn-large" type="submit" name="action">
-                  Log in
-                </button>
               </div>
+            </form>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m12 l6">
+              <p>During World War II, aviation became a critical component of modern warfare. Aircraft played a crucial role throughout the entire war, from the Battle of Britain in the early stages to the great aircraft carrier battles between American and Japanese Pacific fleets. The major combatants manufactured huge air forces
+                  that engaged in pitched battles in the air and on the ground. Bombing established
+                  itself as a major strategic force, and this was also the first war in which the aircraft carrier played a
+                  significant role.
+              </p>
+              <img class="img hide-on-med-and-down	" src="http://4.bp.blogspot.com/_GbPcI30qhvQ/TR6cj8y9vOI/AAAAAAAABj8/jFpdP9ZR5o0/s1600/AU-1+Tailhook+Association+020.jpg" alt="F4U Corsair">
             </div>
-          </form>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col s12 m12 l6">
-            <p>During World War II, aviation became a critical component of modern warfare. Aircraft played a crucial role throughout the entire war, from the Battle of Britain in the early stages to the great aircraft carrier battles between American and Japanese Pacific fleets. The major combatants manufactured huge air forces
-                that engaged in pitched battles in the air and on the ground. Bombing established
-                itself as a major strategic force, and this was also the first war in which the aircraft carrier played a
-                significant role.
-            </p>
-            <img class="img hide-on-med-and-down	" src="http://4.bp.blogspot.com/_GbPcI30qhvQ/TR6cj8y9vOI/AAAAAAAABj8/jFpdP9ZR5o0/s1600/AU-1+Tailhook+Association+020.jpg" alt="F4U Corsair">
-          </div>
-          <div class="col s12 m12 l6">
-            <img class="img hide-on-med-and-down	" src="http://airwingmedia.com/wp-content/uploads/2013/05/P38-May1988-5.jpg" alt="P-38 J Lightning">
-            <p>
-              As with Aviation in World War I, military investment during World War II drove aviation forward in leaps and bounds.
-              The streamlined cantilever monoplane quickly proved its worth in almost every role, although a few older biplanes remained
-              in niche roles for much of the war. Engine power and aircraft performance increased steadily, with jet and rocket engines
-              beginning to make their appearance by the end of the war. Avionics systems increased in sophistication and became more widespread,
-              including power-assisted flight controls, blind flying instrumentation, radio communications and radar tracking. The development
-              of civil aviation stagnated until peace could be restored, and in the combatant countries many existing civilian aircraft were
-              pressed into military service. However military technologies developed during the war would revolutionise postwar aviation.
-              In particular, the widespread construction of aerodromes with serviceable runways would provide the basis for a postwar move of
-              long-range passenger flights from flying boats to landplanes.
-            </p>
+            <div class="col s12 m12 l6">
+              <img class="img hide-on-med-and-down	" src="http://airwingmedia.com/wp-content/uploads/2013/05/P38-May1988-5.jpg" alt="P-38 J Lightning">
+              <p>
+                As with Aviation in World War I, military investment during World War II drove aviation forward in leaps and bounds.
+                The streamlined cantilever monoplane quickly proved its worth in almost every role, although a few older biplanes remained
+                in niche roles for much of the war. Engine power and aircraft performance increased steadily, with jet and rocket engines
+                beginning to make their appearance by the end of the war. Avionics systems increased in sophistication and became more widespread,
+                including power-assisted flight controls, blind flying instrumentation, radio communications and radar tracking. The development
+                of civil aviation stagnated until peace could be restored, and in the combatant countries many existing civilian aircraft were
+                pressed into military service. However military technologies developed during the war would revolutionise postwar aviation.
+                In particular, the widespread construction of aerodromes with serviceable runways would provide the basis for a postwar move of
+                long-range passenger flights from flying boats to landplanes.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      </div>
-    </main>
-  </body>
-  <!-- <script src="./js/index.js" charset="utf-8"></script> -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  <script src="../js/index.js" charset="utf-8"></script>
-</html>
+        </div>
+      </main>
+    </body>
+    <!-- <script src="./js/index.js" charset="utf-8"></script> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="./js/index.js" charset="utf-8"></script>
+  </html>

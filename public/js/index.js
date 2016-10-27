@@ -43,7 +43,7 @@
 
     const options = { // req body
       contentType: 'application/json',
-      data: JSON.stringify({ email, password }),
+      data: JSON.stringify({ firstName, lastName, email, password }),
       dataType: 'json',
       type: 'POST',
       url: '/users'
@@ -51,7 +51,7 @@
 
     $.ajax(options)
       .done(() => {
-        window.location.href = '/user_search.html';
+        window.location.href = '/collection.html';
       })
       .fail(($xhr) => {
         Materialize.toast($xhr.responseText, 3000);
@@ -98,7 +98,7 @@
 
     $.ajax(options)
       .done(() => {
-        window.location.href = '/user_search.html';
+        window.location.href = '/user_favorites.html';
       })
       .fail(($xhr) => {
         Materialize.toast($xhr.responseText, 3000);
