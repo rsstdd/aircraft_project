@@ -1,7 +1,44 @@
+
+/*Hgroup*/
+h1, h2, h3, h4 {
+  font-family: 'Marcellus SC', serif;
+  color: #2a2a2a;
+}
+p {
+  font-family: 'Old Standard TT', serif;
+  font-size:120%;
+  line-height:1.2;
+  font-weight: bold;
+  color: #2a2a2a;
+}
+
 /*HERO*/
 .hero {
-  background-image: url('./images/p38j.jpg');
-  height: 50%;
-  width: 100%;
+/*background: url('http://airwingmedia.com/wp-content/uploads/2013/05/P38-May1988-5.jpg') no-repeat center center;
+opacity: 0.9;
+background-repeat: no-repeat;
+height: 100vh;
+background-size: cover;
+vertical-align: top;
+display: block;*/
+margin-top: 129px;
+}
 
+/*.hero .contain {
+display: table-cell;
+text-align: center;
+vertical-align: middle;
+height: 689px
+}*/
+.nav-wrapper {
+  padding-bottom: 0px;
+  margin-bottom: 0;
+  height: 130px;
+  border-bottom: solid #4b5320  8px;
+}
+
+.reg-btn {
+  margin-left: 37%;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
