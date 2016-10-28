@@ -4,6 +4,16 @@ const Joi = require('joi');
 
 module.exports.post = {
   body: {
+    firstName: Joi.string()
+      .label('First Name')
+      .required()
+      .trim(),
+
+    lastName: Joi.string()
+      .label('First Name')
+      .required()
+      .trim(),
+
     email: Joi.string()
       .label('Email')
       .required()

@@ -27,7 +27,7 @@
       );
     }
 
-    if (!firstName || firstName.trim()) {
+    if (!firstName) {
       return Materialize.toast(
         'You Must Include a First Name',
         3000

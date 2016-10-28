@@ -12,8 +12,19 @@ const validations = require('../validations/token');
 
 const router = express.Router();
 
+const authorize = function(req, res, next) {
+  jwt.verify(req.cookies.token, process.env.JWT_SECRET, (err) => {
+    res.verify = err === null;
+    next();
+  });
+};
+
+router.get('/token', authorize, (req, res) => {
+  res.send(res.verify);
+});
+
 router.post('/token', ev(validations.post), (req, res, next) => {
-  const { email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
   let user;
 

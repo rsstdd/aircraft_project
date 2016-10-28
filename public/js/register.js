@@ -1,9 +1,6 @@
 'use strict';
 
 (function() {
-  $('.parallax').parallax();
-  $('.modal-trigger').leanModal();
-
   // eslint-disable-next-line max-statements
   $('#register').click((event) => {
     event.preventDefault();
