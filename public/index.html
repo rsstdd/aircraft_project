@@ -1,27 +1,28 @@
   <!DOCTYPE html>
-  <html>
+  <html lang="en">
     <head>
       <meta charset="utf-8">
       <title>Aircraft_Project</title>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
       <link type="text/css" rel="stylesheet" href="./css/app.css">
-      <link href="https://fonts.googleapis.com/css?family=Marcellus+SC|Old+Standard+TT" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet"> -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
       <header class="row">
         <div class="navbar">
-        <nav class="blue-grey darken-1">
-          <div class="nav-wrapper">
-            <a class="brand-logo center" data-activates="mobileNav">
-              <span>
-                <img class="logo-png" src="./images/aircraft_logo.png" />
-              </span>
-            </a>
-          </div>
-        </nav>
-      </div>
+          <nav class="blue-grey darken-1">
+            <div class="nav-wrapper">
+              <a class="brand-logo center" data-activates="mobileNav">
+                <span>
+                  <img class="logo-png" src="./images/aircraft_logo.png" alt="logo"/>
+                </span>
+              </a>
+            </div>
+          </nav>
+        </div>
       </header>
 
       <main>
@@ -43,19 +44,21 @@
                       <div class="row modal-form-row">
                         <div class="row">
                           <div class="input-field col s12 modal-form-row">
-                            <input id="firstName" type="First Name" class="validate">
-                            <label for="First Name" data-error="wrong" data-success="You Got it">First Name</label>
+                            <input id="firstName" type="text" class="validate">
+                            <label for="firstName" data-error="Oops! Something went south. Please include a last name." data-success="You Got it">First Name</label>
                           </div>
                         </div>
                         <div class="row">
                           <div class="input-field col s12 modal-form-row">
-                            <input id="lastName" type="First Name" class="validate">
-                            <label for="Last Name" data-error="wrong" data-success="You Got it">Last Name</label>
+                            <input id="lastName" type="text" class="validate">
+                            <label for="lastName" data-error="Oops! Something went south. Please include a last name." data-success="You Got it">Last Name</label>
                           </div>
                         </div>
-                        <div class="input-field col s12">
-                          <input id="email" type="email" class="validate">
-                          <label for="Email" data-error="Enter a Valid Email" data-success="You Got it">Email</label>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email" data-error="Enter a Valid Email" data-success="You Got it">Email</label>
+                          </div>
                         </div>
                         <div class="row">
                           <div class="input-field col s12">
@@ -104,11 +107,10 @@
             </div>
           </div>
         </div>
-        </div>
       </main>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+      <script type="text/javascript" src="./js/index.js" charset="utf-8"></script>
+      <script type="text/javascript" src="./js/mat.js" charset="utf-8"></script>
     </body>
-    <!-- <script src="./js/index.js" charset="utf-8"></script> -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-    <script src="./js/index.js" charset="utf-8"></script>
   </html>

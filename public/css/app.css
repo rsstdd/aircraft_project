@@ -1,15 +1,19 @@
 
 /*Hgroup*/
-h1, h2, h3, h4 {
+h1, h2, h3, h4, p {
   font-family: 'Marcellus SC', serif;
   color: #2a2a2a;
 }
 p {
-  font-family: 'Old Standard TT', serif;
+  font-family: serif;
   font-size:120%;
   line-height:1.2;
   font-weight: bold;
   color: #2a2a2a;
+}
+
+* {
+  background-color: #F2F2F2;
 }
 
 .img {
@@ -32,4 +36,7 @@ margin-top: 129px;
 .reg-btn {
   margin-top: 35px;
   margin-bottom: 35px;
+}
+.logo-png {
+  padding-left: 47px;
 }

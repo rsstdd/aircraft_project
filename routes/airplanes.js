@@ -82,34 +82,6 @@ router.patch('/aircraft/:id', ev(validations.patch), (req, res, next) => {
       const { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl } = req.body;
       const updateAircraft = {};
 
-      // if (name || name.trim()) { // says the trim is better
-      //   updateAircraft.name = name;
-      // }
-      // if (!isNaN(yearInService)) {
-      //   updateAircraft.yearInService = yearInService;
-      // }
-      // if (countryOfOrigin) {
-      //   updateAircraft.countryOfOrigin = countryOfOrigin;
-      // }
-      // if (operators || operators.trim()) {
-      //   updateAircraft.operators = operators;
-      // }
-      // if (!isNaN(maxSpeed)) {
-      //   updateAircraft.maxSpeed = maxSpeed;
-      // }
-      // if (!isNaN(ceiling)) {
-      //   updateAircraft.maxRange = ceiling;
-      // }
-      // if (!isNaN(maxRange)) {
-      //   updateAircraft.maxRange = maxRange;
-      // }
-      // if (engines || engines.trim()) {
-      //   updateAircraft.maxSpeed = engines;
-      // }
-      // if (imgUrl || imgUrl.trim()) {
-      //   updateAircraft.maxRange = imgUrl;
-      // }
-
       return knex('airplanes')
         .update(decamelizeKeys(updateAircraft), '*')
         .where('id', req.params.id);

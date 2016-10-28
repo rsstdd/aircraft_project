@@ -96,7 +96,7 @@
       url: '/token'
     };
 
-    $.ajax(options)
+    $.ajax(options)s
       .done(() => {
         window.location.href = '/user_favorites.html';
       })
