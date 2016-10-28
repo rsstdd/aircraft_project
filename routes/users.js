@@ -1,6 +1,7 @@
 'use strict';
 
 const bcrypt = require('bcrypt-as-promised');
+const boom = require('boom');
 const express = require('express');
 const knex = require('../knex');
 const { camelizeKeys, decamelizeKeys } = require('humps');
@@ -25,7 +26,10 @@ router.post('/users', authorize, ev(validations.post), (req, res, next) => {
     .where('email', email)
     .then((rows) => {
       if (rows.length) {
-        return next(boom.create(400, 'Email already exists'));
+        return next(boom.create(
+          400,
+          'Email already exists'
+        ));
       }
 
       bcrypt.hash(password, 13)

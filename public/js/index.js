@@ -12,6 +12,8 @@
     const lastName = $('#lastName').val().trim();
     const password = $('#password').val();
 
+    console.log(firstName, lastName, email, password);
+
     if (!email) {
       return Materialize.toast('Email must not be blank', 3000);
     }
@@ -44,6 +46,7 @@
     const options = { // req body
       contentType: 'application/json',
       data: JSON.stringify({ firstName, lastName, email, password }),
+      console.log(data);
       dataType: 'json',
       type: 'POST',
       url: '/users'

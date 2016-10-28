@@ -26,6 +26,8 @@ router.get('/token', authorize, (req, res) => {
 router.post('/token', ev(validations.post), (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
+  console.log(firstName, lastName, email, password);
+
   let user;
 
   knex('users')

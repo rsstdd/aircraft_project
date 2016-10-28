@@ -3,10 +3,6 @@
 (function() {
 // eslint-disable-next-line max-statements
 
-  const $countrybtn = $('.countrybtn');
-  const $citybtn = $('.citybtn');
-  const $city = $('.city');
-  const $country = $('.autocomplete');
   const $images = $('#images');
   const $logout = $('#logout');
 
@@ -14,10 +10,10 @@
     .done((data) => {
       for (let i = 0; i < data.length; i++) {
         $images.append(
-          `<div class="col s6">
+          `<div class="col s12 m12 l6">
             <div class="card medium">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="${data[i].photoUrl}" height="300px" width="100px">
+                <img class="activator" src="${data[i].imgUrl}" height="300px" width="100px">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4 truncate">
@@ -25,7 +21,7 @@
                 </span>
                 <div class="divider"></div>
                 <p>
-                  <a type="submit" class="btn search" id="${data[i].name}">view</a>
+                  <a type="submit" class="btn search" id="${data[i].id}">view</a>
                 </p>
               </div>
               <div class="card-reveal">
@@ -34,7 +30,7 @@
                 <p>${data[i].description}</p>
                   <div class="divider"></div>
                   <p>
-                    <a type="submit" class="btn delete" id="${data[i].destinationId}">
+                    <a type="submit" class="btn delete" id="${data[i].id}">
                       Delete
                     </a>
                   </p>
@@ -52,7 +48,7 @@
       $search.click(searchFav);
     })
     .fail(() => {
-      window.location.href = '/404.html';
+      window.location.href = '/collection.html';
     });
 
   function airplaneSearch(event) {
@@ -160,7 +156,7 @@
       });
   }
 
-  function logout(event) {
+  const logout = function(event) {
     event.preventDefault();
 
     const options = {
@@ -179,7 +175,5 @@
       });
   }
 
-  $countrybtn.click(airplaneSearch);
-  $citybtn.click(citySearch);
   $logout.click(logout);
 })();

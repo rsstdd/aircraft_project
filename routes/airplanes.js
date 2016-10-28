@@ -11,7 +11,7 @@ const validations = require('../validations/airplanes');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-router.get('/aircraft', (_req, res, next) => {
+router.get('/airplanes', (_req, res, next) => {
   knex('airplanes')
     .orderBy('name')
     .then((rows) => {
@@ -24,32 +24,10 @@ router.get('/aircraft', (_req, res, next) => {
     });
 });
 
-router.get('/aircraft/:id', (req, res, next) => {
-  const id = Number.parseInt(req.params.id);
+router.post('/airplanes', ev(validations.post), (req, res, next) => {
 
-  if (Number.isNaN(id)) {
-    return next();
-  }
-
-  knex('airplanes')
-    .where('id', req.params.id)
-    .first()
-    .then((row) => {
-      if (!row) {
-        throw boom.create(404, 'Not Found');
-      }
-
-      const aircraft = camelizeKeys(row);
-
-      res.send(aircraft);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
-
-router.post('/aircraft', ev(validations.post), (req, res, next) => {
   const { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl } = req.body;
+
   const insertPlane = { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl };
 
   knex('airplanes')
@@ -64,7 +42,7 @@ router.post('/aircraft', ev(validations.post), (req, res, next) => {
     });
 });
 
-router.patch('/aircraft/:id', ev(validations.patch), (req, res, next) => {
+router.patch('/airplanes/:id', ev(validations.patch), (req, res, next) => {
   const id = Number.parseInt(req.params.id);
 
   if (Number.isNaN(id)) {
