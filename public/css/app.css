@@ -49,3 +49,14 @@ margin-top: 129px;
   padding-bottom: 35px;
   /*background-color: #F2F2F2;*/
 }
+.card .card-reveal {
+  background-color: #F2F2F2;
+}
+.card {
+  background-color: #F2F2F2;
+}
+.btn {
+  margin-top: 25px;
+  margin-left: 5%;
+  font-family: serif;
+}

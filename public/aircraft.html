@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Aircraft_Project</title>
+      <meta charset="utf-8">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+      <link type="text/css" rel="stylesheet" href="./css/app.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+   <body>
+      <header class="row">
+        <div class="navbar">
+          <nav class="blue-grey darken-1r">
+            <div class="nav-wrapper">
+              <a class="brand-logo center" data-activates="mobileNav">
+                <span>
+                  <img class="logo-png" src="./images/aircraft_logo.png" alt="logo" />
+                </span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <div class="container">
+          <div class="row">
+              <div class="col s12">
+                <img id="img">
+              </div>
+
+              <div id="aircraft" class="col s12 m8">
+                <h3 id="name"></h3>
+
+                <h5>By <span id="author"></span></h5>
+
+                <p id="description" class="flow-text"></p>
+
+                <h6>Genre: <span id="genre"></span></h6>
+
+                <a id="addFavorite" class="waves-effect waves-light btn-large hide">
+                  <i class="material-icons left">thumb_up</i>
+                  Add Favorite
+                </a>
+
+                <a id="removeFavorite" class="waves-effect waves-light btn-large hide">
+                  <i class="material-icons left">thumb_down</i>
+                  Remove Favorite
+                </a>
+
+                <a id="editBook" class="waves-effect waves-light btn-large amber darken-3">
+                  <i class="material-icons left">edit</i>
+                  Edit
+                </a>
+
+              </div>
+            </div>
+          </div>
+
+        <!-- <div id="deleteModal" class="modal">
+          <div class="modal-content">
+            <h4>Delete this book?</h4>
+            <p>You won't be able to undo this operation.</p>
+          </div>
+
+          <div class="modal-footer">
+            <a id="confirmDelete" class="modal-action modal-close waves-effect waves-green btn-flat">
+              <strong>Delete</strong>
+            </a>
+
+            <a id="cancelDelete" class="modal-action modal-close waves-effect waves-red btn-flat">
+              Cancel
+            </a>
+          </div>
+        </div> -->
+      </main>
+
+
+      <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+      <script src="./js/collection.js"></script>
+      <script src="./js/mat.js"></script>
+   </body>
+</html>

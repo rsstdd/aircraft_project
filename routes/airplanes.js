@@ -15,9 +15,22 @@ router.get('/airplanes', (_req, res, next) => {
   knex('airplanes')
     .orderBy('name')
     .then((rows) => {
-      const airplane = camelizeKeys(rows);
+      const aircraft = camelizeKeys(rows);
 
-      res.send(airplane);
+      res.send(aircraft);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.get('/airplanes:id', (_req, res, next) => {
+  knex('airplanes')
+    .orderBy('name')
+    .then((rows) => {
+      const aircraft = camelizeKeys(rows);
+
+      res.send(aircraft);
     })
     .catch((err) => {
       next(err);
@@ -33,9 +46,9 @@ router.post('/airplanes', ev(validations.post), (req, res, next) => {
   knex('airplanes')
     .insert(decamelizeKeys(insertPlane), '*')
     .then((rows) => {
-      const plane = camelizeKeys(rows[0]);
+      const aircraft = camelizeKeys(rows[0]);
 
-      res.send(plane);
+      res.send(aircraft);
     })
     .catch((err) => {
       next(err);
