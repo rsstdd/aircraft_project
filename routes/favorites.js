@@ -80,6 +80,31 @@ router.post('/favorites/', authorize, ev(validations.post), (req, res, next) => 
     });
 });
 
+router.get('/favorites/check', authorize, (req, res, next) => {
+  const { userId } = req.token;
+  const { bookId } = req.query;
+
+  if (Number.isNaN(Number.parseInt(bookId))) {
+    return next(boom.create(400, 'Book ID must be an integer'));
+  }
+
+  knex('favorites')
+    .innerJoin('books', 'books.id', 'favorites.book_id')
+    .where('favorites.user_id', userId)
+    .where('books.id', bookId)
+    .first()
+    .then((row) => {
+      if (!row) {
+        return res.send(false);
+      }
+
+      res.send(true);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 router.delete('/favorites', authorize, ev(validations.delete), (req, res, next) => {
   let favorite;
   const  { aircraftId } = req.body;

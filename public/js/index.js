@@ -46,7 +46,6 @@
     const options = { // req body
       contentType: 'application/json',
       data: JSON.stringify({ firstName, lastName, email, password }),
-      console.log(data);
       dataType: 'json',
       type: 'POST',
       url: '/users'

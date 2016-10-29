@@ -24,11 +24,23 @@ router.get('/airplanes', (_req, res, next) => {
     });
 });
 
-router.get('/airplanes:id', (_req, res, next) => {
+router.get('/airplanes/:id', (req, res, next) => {
+  const id = Number.parseInt(req.params.id);
+  console.log(id);
+
+  if (Number.isNaN(id)) {
+    return next(); // say next and it will go down to the catch
+  }
+
   knex('airplanes')
-    .orderBy('name')
-    .then((rows) => {
-      const aircraft = camelizeKeys(rows);
+    .where('id', req.params.id)
+    .first() // gives the first row; not an array of rows
+    .then((row) => {
+      if (!row) {
+        throw boom.create(404, 'Not Found'); // throw it not next because you want to keep goint; When you throw in a then block, the promise will catch that and send it to the .catch error handler
+      }
+
+      const aircraft = camelizeKeys(row);
 
       res.send(aircraft);
     })
@@ -88,7 +100,7 @@ router.patch('/airplanes/:id', ev(validations.patch), (req, res, next) => {
 });
 
 router.delete('/airplanes/:id', (req, res, next) => {
-  let book;
+  let aircraft;
   const id = Number.parseInt(req.params.id);
 
   if (Number.isNaN(Number.parseInt(id))) {
@@ -103,16 +115,16 @@ router.delete('/airplanes/:id', (req, res, next) => {
         throw boom.create(404, 'Not Found');
       }
 
-      book = camelizeKeys(row);
+      aircraft = camelizeKeys(row);
 
       return knex('airplanes')
         .del()
         .where('id', id)
     })
     .then(() => {
-      delete book.id;
+      delete aircraft.id;
 
-      res.send(book);
+      res.send(aircraft);
     })
     .catch((err) => {
       next(err);

@@ -46,6 +46,7 @@
     .fail(() => {
       window.location.href = '/collection.html';
     });
+
   const logout = function(event) {
     event.preventDefault();
 
