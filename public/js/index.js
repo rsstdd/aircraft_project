@@ -12,7 +12,19 @@
     const lastName = $('#lastName').val().trim();
     const password = $('#password').val();
 
-    console.log(firstName, lastName, email, password);
+    if (!firstName) {
+      return Materialize.toast(
+        'You Must Include a First Name',
+        3000
+      );
+    }
+
+    if (!lastName || lastName.trim()) {
+      return Materialize.toast(
+        'You Must Include a Last Name',
+        3000
+      );
+    }
 
     if (!email) {
       return Materialize.toast('Email must not be blank', 3000);
@@ -29,19 +41,6 @@
       );
     }
 
-    if (!firstName) {
-      return Materialize.toast(
-        'You Must Include a First Name',
-        3000
-      );
-    }
-
-    if (!lastName || lastName.trim()) {
-      return Materialize.toast(
-        'You Must Include a Last Name',
-        3000
-      );
-    }
 
     const options = { // req body
       contentType: 'application/json',
@@ -68,14 +67,6 @@
     const email = $('#email').val().trim();
     const password = $('#password').val();
 
-    if (!email) {
-      return Materialize.toast('Email must not be blank', 3000);
-    }
-
-    if (!password) {
-      return Materialize.toast('Password must not be blank', 3000);
-    }
-
     if (!firstName) {
       return Materialize.toast(
         'You Must Include a First Name',
@@ -87,6 +78,20 @@
       return Materialize.toast(
         'You Must Include a Last Name',
         3000
+      );
+    }
+
+    if (!email) {
+      return Materialize.toast(
+        'Email must not be blank',
+        3000
+      );
+    }
+
+    if (!password) {
+      return Materialize.toast(
+        'Password must not be blank',
+        300
       );
     }
 

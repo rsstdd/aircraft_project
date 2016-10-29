@@ -27,6 +27,7 @@ router.get('/airplanes', (_req, res, next) => {
 router.get('/airplanes/:id', (req, res, next) => {
   const id = Number.parseInt(req.params.id);
   console.log(id);
+  console.log('hello');
 
   if (Number.isNaN(id)) {
     return next(); // say next and it will go down to the catch

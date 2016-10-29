@@ -1,9 +1,12 @@
 'use strict';
 
 (function() {
+    console.log('hello');
   // const aircraftId = window.QUERY_PARAMETERS.id;
   const aircraftId = window.location.search.substring(4);
   // console.log(aircraftId);
+  // const aircraftId = window.QUERY_PARAMETERS.id;
+  console.log(aircraftId);
   if (!aircraftId) {
     // console.log('bang');
     window.location.href = '/index.html';
@@ -76,34 +79,33 @@
 
   $.getJSON(`/airplanes:${aircraftId}`)
     .done((aircraft) => {
-      console.log(aircraft);
       renderAircraft(aircraft);
       attachListeners(aircraft);
     })
     .fail(() => {
-      Materialize.toast('Unable to retrieve aircraft', 3000);
+      Materialize.toast('Whyyyyyyy??  :(', 3000);
     });
 
-  // $.getJSON('/token')
-  //   .done((isLoggedIn) => {
-  //     if (!isLoggedIn) {
-  //       return;
-  //     }
-  //
-  //     $.getJSON(`/favorites/check?bookId=${aircraftId}`)
-  //       .done((isFavorite) => {
-  //         if (isFavorite) {
-  //           $('#removeFavorite').removeClass('hide');
-  //         }
-  //         else {
-  //           $('#addFavorite').removeClass('hide');
-  //         }
-  //       })
-  //       .fail(($xhr) => {
-  //         Materialize.toast($xhr.responseText, 3000);
-  //       });
-  //   })
-  //   .fail(($xhr) => {
-  //     Materialize.toast($xhr.responseText, 3000);
-  //   });
+  $.getJSON('/token')
+    .done((isLoggedIn) => {
+      if (!isLoggedIn) {
+        return;
+      }
+
+      $.getJSON(`/favorites/check?bookId=${aircraftId}`)
+        .done((isFavorite) => {
+          if (isFavorite) {
+            $('#removeFavorite').removeClass('hide');
+          }
+          else {
+            $('#addFavorite').removeClass('hide');
+          }
+        })
+        .fail(($xhr) => {
+          Materialize.toast($xhr.responseText, 3000);
+        });
+    })
+    .fail(($xhr) => {
+      Materialize.toast($xhr.responseText, 3000);
+    });
 })();
