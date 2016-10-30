@@ -1,19 +1,14 @@
 'use strict';
 
 (function() {
-    console.log('hello');
   // const aircraftId = window.QUERY_PARAMETERS.id;
   const aircraftId = window.location.search.substring(4);
-  // console.log(aircraftId);
-  // const aircraftId = window.QUERY_PARAMETERS.id;
-  console.log(aircraftId);
+
   if (!aircraftId) {
-    // console.log('bang');
     window.location.href = '/index.html';
   }
 
   const renderAircraft = function(aircraft) {
-    console.log('herrow');
     $('#name').text(aircraft.name);
     $('#countryOfOrigin').text(aircraft.countryOfOrigin);
     $('#engines').text(aircraft.engines);
@@ -43,10 +38,16 @@
           $('#addFavorite').addClass('hide');
           $('#removeFavorite').removeClass('hide');
 
-          Materialize.toast('Added aircraft to your favorites', 3000);
+          Materialize.toast(
+            'Added aircraft to your favorites',
+            3000
+          );
         })
         .fail(() => {
-          Materialize.toast('Unable to add this aircraft to your favorites', 3000);
+          Materialize.toast(
+            'Unable to add this aircraft to your favorites',
+            3000
+          );
         });
     });
 
@@ -66,24 +67,30 @@
           $('#removeFavorite').addClass('hide');
           $('#addFavorite').removeClass('hide');
 
-          Materialize.toast('Removed book from your favorites', 3000);
+          Materialize.toast(
+          'Removed aircraft from your favorites',
+          3000
+        );
         })
         .fail(() => {
           Materialize.toast(
-            'Unable to remove this book from your favorites',
+            'Unable to remove this aircraft from your favorites',
             3000
           );
         });
     });
   };
 
-  $.getJSON(`/airplanes:${aircraftId}`)
+  $.getJSON(`/airplanes/${aircraftId}`  )
     .done((aircraft) => {
       renderAircraft(aircraft);
       attachListeners(aircraft);
     })
     .fail(() => {
-      Materialize.toast('Whyyyyyyy??  :(', 3000);
+      Materialize.toast(
+        'Your aircraft could not be retrieved',
+        3000
+      );
     });
 
   $.getJSON('/token')
