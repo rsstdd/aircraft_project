@@ -31,12 +31,3 @@
       window.location.href = '/aircraft.html';
     });
 })();
-
-// <div class="card-stacked">
-//   <div class="card-content">
-//     <h5>${fav.name}</h5>
-//     <p>${fav.yearInService}</p>
-//   </div>
-//   <div class="card-action">
-//     <a href="/aircraft.html?id=${fav.airplaneId}">View</a>
-//   </div>

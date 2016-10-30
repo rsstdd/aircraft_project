@@ -10,8 +10,8 @@
     .done((data) => {
       for (let i = 0; i < data.length; i++) {
         $images.append(
-        `<div class="col s12 m12 l6">
-          <div class="card medium">
+        `<div class="col s12 m12 l4 offset-by-m2">
+          <div class="card medium hoverable">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="${data[i].imgUrl}" height="300px" width="100px">
             </div>
@@ -40,7 +40,6 @@
         );
       }
       const $del = $('.delete');
-
       const $search = $('.search');
     })
     .fail(() => {

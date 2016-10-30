@@ -53,18 +53,15 @@ router.get('/favorites/:id', authorize, (req, res, next) => {
 router.post('/favorites/', authorize, ev(validations.post), (req, res, next) => {
   const { userId } = req.token;
   const { aircraftId } = req.body;
+  const airplaneId = aircraftId;
 
-  const favorite = { aircraftId, userId };
+  const favorite = { airplaneId, userId };
 
   knex('favorites')
    .where('airplane_id', aircraftId)
    .where('user_id', userId)
    .first()
    .then((row) => {
-     if (!row) {
-       return next(boom.create(404, 'aircraft not found'));
-     }
-
      return knex('favorites')
       .insert(decamelizeKeys(favorite), '*')
       .then((rows) => {
