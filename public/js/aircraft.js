@@ -16,8 +16,9 @@
     $('#maxRange').text(aircraft.maxRange);
     $('#ceiling').text(aircraft.ceiling);
     $('#description').text(aircraft.description);
-    $('#operators').text(aircraft.description);
-    $('#image').attr({ src: aircraft.imgUrl, alt: aircraft.title });
+    $('#operators').text(aircraft.operators);
+    $('#img').attr({ src: aircraft.imgUrl, alt: aircraft.title });
+    $('#img').attr('class', 'materialboxed responsive-img');
     $('#editAircraft').attr('href', `/edit_aircraft.html?id=${aircraft.id}`);
   };
 

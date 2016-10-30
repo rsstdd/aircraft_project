@@ -49,9 +49,7 @@ router.get('/airplanes/:id', (req, res, next) => {
 });
 
 router.post('/airplanes', ev(validations.post), (req, res, next) => {
-
   const { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl } = req.body;
-
   const insertPlane = { name, yearInService, countryOfOrigin, operators, maxSpeed, maxRange, ceiling, engines, imgUrl };
 
   knex('airplanes')
