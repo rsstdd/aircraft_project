@@ -67,10 +67,13 @@
           $('#addFavorite').addClass('hide');
           $('#removeFavorite').removeClass('hide');
 
-          Materialize.toast('Added book to your favorites', 3000);
+          Materialize.toast('Added aircraft to your favorites', 3000);
         })
         .fail(() => {
-          Materialize.toast('Unable to add this book to your favorites', 3000);
+          Materialize.toast(
+            'Unable to add this aircraft to your favorites',
+            3000
+          );
         });
     });
 
@@ -122,7 +125,7 @@
         return;
       }
 
-      $.getJSON(`/favorites/check?bookId=${aircraftId}`)
+      $.getJSON(`/favorites/check?aircraftId=${aircraftId}`)
         .done((isFavorite) => {
           if (isFavorite) {
             $('#removeFavorite').removeClass('hide');

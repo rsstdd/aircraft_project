@@ -44,5 +44,8 @@
     "normalize.css": "^5.0.0",
     "pg": "^6.1.0",
     "request": "^2.76.0"
+  },
+  "engines": {
+    "node": "7.0.0"
   }
 }

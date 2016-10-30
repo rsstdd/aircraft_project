@@ -61,7 +61,7 @@ router.post('/favorites/', authorize, ev(validations.post), (req, res, next) => 
    .first()
    .then((row) => {
      if (!row) {
-       return next(boom.create(404, 'Book not found'));
+       return next(boom.create(404, 'aircraft not found'));
      }
 
      return knex('favorites')
@@ -113,7 +113,7 @@ router.delete('/favorites', authorize, ev(validations.delete), (req, res, next) 
   const  { aircraftId } = req.body;
 
   if (isNaN(Number.parseInt(aircraftId))) {
-    return next(boom.create(400, 'Book ID must be an integer'));
+    return next(boom.create(400, 'Aircraft ID must be an integer'));
   }
 
   knex('favorites')
