@@ -28,7 +28,7 @@ router.get('/favorites', authorize, (req, res, next) => {
   const { userId } = req.token;
 
   knex('favorites')
-    .innerJoin('airplanes', 'airplanes.id', 'favorites.aircraft_id')
+    .innerJoin('airplanes', 'airplanes.id', 'favorites.airplane_id')
     .where('favorites.user_id', userId)
     .orderBy('airplanes.name', 'ASC')
     .then((rows) => {
@@ -43,7 +43,7 @@ router.get('/favorites', authorize, (req, res, next) => {
 
 router.get('/favorites/:id', authorize, (req, res, next) => {
   knex('favorites')
-    .where('aircraft_id', req.query.aircraftId)
+    .where('airplane_id', req.query.aircraftId)
     .then((favorites) => res.send(favorites.length > 0))
     .catch((err) => {
       next(err);
@@ -56,8 +56,9 @@ router.post('/favorites/', authorize, ev(validations.post), (req, res, next) => 
 
   const favorite = { aircraftId, userId };
 
-  knex('airplanes')
-   .where('id', aircraftId)
+  knex('favorites')
+   .where('airplane_id', aircraftId)
+   .where('user_id', userId)
    .first()
    .then((row) => {
      if (!row) {
@@ -92,9 +93,9 @@ router.get('/favorites/check', authorize, (req, res, next) => {
   }
 
   knex('favorites')
-    .innerJoin('airplanes', 'airplanes.id', 'favorites.aircraft_id')
+    .innerJoin('airplanes', 'airplanes.id', 'favorites.airplane_id')
     .where('favorites.user_id', userId)
-    .where('airplanes.id', aircraftId)
+    .where('aircraft.id', aircraftId)
     .first()
     .then((row) => {
       if (!row) {
@@ -117,7 +118,7 @@ router.delete('/favorites', authorize, ev(validations.delete), (req, res, next) 
   }
 
   knex('favorites')
-   .where('aircraft_id', aircraftId)
+   .where('airplane_id', aircraftId)
    .first()
    .then((row) => {
      if (!row) {
@@ -128,7 +129,7 @@ router.delete('/favorites', authorize, ev(validations.delete), (req, res, next) 
 
      return knex('favorites')
         .del()
-        .where('aircraft_id', aircraftId);
+        .where('airplane_id', aircraftId);
    })
     .then(() => {
       delete favorite.id;

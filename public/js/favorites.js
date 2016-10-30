@@ -1,5 +1,7 @@
 'use strict';
 (function() {
+  const $favorites = $('#favorites');
+
   $.getJSON('/favorites')
     .done((favorites) => {
       const $favs = $('#favorites');
@@ -7,9 +9,9 @@
       for (const fav of favorites) {
         const $anchor = $('<a>')
           .attr({
-            href: `/aircraft.html?id=${fav.aircraftId}`,
+            href: `/aircraft.html?id=${fav.airplaneId}`,
             'data-delay': '50',
-            'data-tooltip': fav.title
+            'data-tooltip': fav.name
           })
           .tooltip();
 
@@ -29,3 +31,12 @@
       window.location.href = '/aircraft.html';
     });
 })();
+
+// <div class="card-stacked">
+//   <div class="card-content">
+//     <h5>${fav.name}</h5>
+//     <p>${fav.yearInService}</p>
+//   </div>
+//   <div class="card-action">
+//     <a href="/aircraft.html?id=${fav.airplaneId}">View</a>
+//   </div>

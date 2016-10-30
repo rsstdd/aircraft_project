@@ -27,7 +27,7 @@
 
       const options = {
         contentType: 'application/json',
-        data: JSON.stringify({ aircraftId: aircraftId.id }),
+        data: JSON.stringify({ aircraftId: aircraftId }),
         dataType: 'json',
         type: 'POST',
         url: '/favorites'
@@ -56,7 +56,7 @@
 
       const options = {
         contentType: 'application/json',
-        data: JSON.stringify({ aircraftId: aircraftId.id }),
+        data: JSON.stringify({ aircraftId: aircraftId }),
         dataType: 'json',
         type: 'POST',
         url: '/favorites'
@@ -82,7 +82,7 @@
 
       const options = {
         contentType: 'application/json',
-        data: JSON.stringify({ aircraftId: aircraftId.id }),
+        data: JSON.stringify({ aircraftId: aircraftId }),
         dataType: 'json',
         type: 'DELETE',
         url: '/favorites'
