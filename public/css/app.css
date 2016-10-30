@@ -1,3 +1,6 @@
+/** {
+  background-color: #F2F2F2;
+}*/
 
 /*Hgroup*/
 h1, h2, h3, h4, p {
@@ -18,42 +21,42 @@ p {
   color: #2a2a2a;
 }
 
-* {
-  background-color: #F2F2F2;
-}
-
 header {
   margin-bottom: 35px;
 }
-.img {
-  height: 100%;
+#img {
   width: 100%;
+  z-index: 0;
+  margin-top: 35px;
 }
 
 /*HERO*/
 .hero {
 margin-top: 129px;
 }
-
 .nav-wrapper {
   padding-bottom: 35px;
   margin-bottom: 0;
   height: 230px;
-  /*background-color: ##F2F2F2;*/
-  border-bottom: solid #4b5320  10px;
+  border-bottom: solid #4b5320  6px;
 }
 .navbar{
   margin-bottom: 45px;
 }
+.nav a i {
+  color: #4b5320;;
+}
+.nav {
+  color: #4b5320;
+}
 
 .reg-btn {
   margin-top: 35px;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 .logo-png {
   padding-left: 47px;
   padding-bottom: 35px;
-  /*background-color: #F2F2F2;*/
 }
 .card .card-reveal {
   background-color: #F2F2F2;
