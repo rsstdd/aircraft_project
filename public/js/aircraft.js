@@ -1,8 +1,7 @@
 'use strict';
 
 (function() {
-  // const aircraftId = window.QUERY_PARAMETERS.id;
-  const aircraftId = window.location.search.substring(4);
+  const aircraftId = window.QUERY_PARAMETERS.id;
 
   if (!aircraftId) {
     window.location.href = '/index.html';
@@ -52,12 +51,35 @@
         });
     });
 
+    $('#addFavorite').click((event) => {
+      event.preventDefault();
+
+      const options = {
+        contentType: 'application/json',
+        data: JSON.stringify({ aircraftId: aircraftId.id }),
+        dataType: 'json',
+        type: 'POST',
+        url: '/favorites'
+      };
+
+      $.ajax(options)
+        .done(() => {
+          $('#addFavorite').addClass('hide');
+          $('#removeFavorite').removeClass('hide');
+
+          Materialize.toast('Added book to your favorites', 3000);
+        })
+        .fail(() => {
+          Materialize.toast('Unable to add this book to your favorites', 3000);
+        });
+    });
+
     $('#removeFavorite').click((event) => {
       event.preventDefault();
 
       const options = {
         contentType: 'application/json',
-        data: JSON.stringify({ aircraftId: aircraft.id }),
+        data: JSON.stringify({ aircraftId: aircraftId.id }),
         dataType: 'json',
         type: 'DELETE',
         url: '/favorites'
@@ -82,7 +104,7 @@
     });
   };
 
-  $.getJSON(`/airplanes/${aircraftId}`  )
+  $.getJSON(`/airplanes/${aircraftId}`)
     .done((aircraft) => {
       renderAircraft(aircraft);
       attachListeners(aircraft);

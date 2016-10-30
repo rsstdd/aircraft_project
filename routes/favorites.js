@@ -69,7 +69,7 @@ router.post('/favorites/', authorize, ev(validations.post), (req, res, next) => 
       .then((rows) => {
         const insertFav = camelizeKeys(rows[0]);
 
-        res.send(insertFav); // then give me what I just inserted into the DB
+        res.send(insertFav);
       })
       .catch((err) => {
         next(err);
@@ -82,16 +82,19 @@ router.post('/favorites/', authorize, ev(validations.post), (req, res, next) => 
 
 router.get('/favorites/check', authorize, (req, res, next) => {
   const { userId } = req.token;
-  const { bookId } = req.query;
+  const { aircraftId } = req.query;
 
-  if (Number.isNaN(Number.parseInt(bookId))) {
-    return next(boom.create(400, 'Book ID must be an integer'));
+  if (Number.isNaN(Number.parseInt(aircraftId))) {
+    return next(boom.create(
+      400,
+      'Aircraft ID must be an integer'
+    ));
   }
 
   knex('favorites')
-    .innerJoin('books', 'books.id', 'favorites.book_id')
+    .innerJoin('airplanes', 'airplanes.id', 'favorites.aircraft_id')
     .where('favorites.user_id', userId)
-    .where('books.id', bookId)
+    .where('airplanes.id', aircraftId)
     .first()
     .then((row) => {
       if (!row) {
