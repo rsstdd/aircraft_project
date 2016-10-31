@@ -100,7 +100,7 @@
 
     const options = {
       contentType: 'application/json',
-      data: JSON.stringify({ firstName, lastName, email, password }),
+      data: JSON.stringify({ email, password }),
       dataType: 'json',
       type: 'POST',
       url: '/token'
