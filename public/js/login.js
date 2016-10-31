@@ -70,7 +70,6 @@
 You're now logged in. You can now add tweets to your favorites.`,
               4000);
 
-            // isLoggedIn = true;
           })
           .fail(($xhr) => {
             console.log($xhr.responseText);
@@ -79,5 +78,5 @@ You're now logged in. You can now add tweets to your favorites.`,
       .fail(($xhr) => {
         console.log($xhr.responseText);
       });
-    });
+ });
 })();
