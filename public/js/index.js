@@ -7,8 +7,6 @@
   $('#register').click((event) => {
     event.preventDefault();
 
-    console.log('hello');
-
     const firstName = $('#firstName').val().trim();
     const lastName = $('#lastName').val().trim();
     const email = $('#email').val().trim();
@@ -35,14 +33,14 @@
       );
     }
 
-    if (!password || $password.length < 8) {
+    if (!password || password.length < 8) {
       return Materialize.toast(
         'Password must be at least 8 characters long',
         3000
       );
     }
 
-    if (!password || $password.length < 8) {
+    if (!password || password.length < 8) {
       return Materialize.toast(
         'Password must be at least 8 characters long',
         3000
@@ -51,7 +49,7 @@
 
     const options = { // req body
       contentType: 'application/json',
-      data: JSON.stringify({ $firstName, $lastName, $email, $password }),
+      data: JSON.stringify({ firstName, lastName, email, password }),
       dataType: 'json',
       type: 'POST',
       url: '/users'
@@ -88,18 +86,16 @@
       );
     }
 
-    if (!email)
+    if (!email) {
       return Materialize.toast(
         'Email must not be blank',
-        300
-      );
+        300);
     }
 
     if (!password) {
       return Materialize.toast(
         'Password must not be blank',
-        300
-      );
+       300);
     }
 
     const options = {
