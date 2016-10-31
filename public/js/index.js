@@ -7,34 +7,42 @@
   $('#register').click((event) => {
     event.preventDefault();
 
-    const email = $('#email').val().trim();
+    console.log('hello');
+
     const firstName = $('#firstName').val().trim();
     const lastName = $('#lastName').val().trim();
+    const email = $('#email').val().trim();
     const password = $('#password').val();
 
     if (!firstName) {
       return Materialize.toast(
-        'You Must Include a First Name',
+        'First Name required here',
         3000
       );
     }
 
-    if (!lastName || lastName.trim()) {
+    if (!lastName) {
       return Materialize.toast(
-        'You Must Include a Last Name',
+        'Last Name required',
         3000
       );
     }
 
     if (!email) {
-      return Materialize.toast('Email must not be blank', 3000);
+      return Materialize.toast(
+        'Email must not be blank',
+        3000
+      );
     }
 
-    if (email.indexOf('@') < 0) {
-      return Materialize.toast('Email must be valid', 3000);
+    if (!password || $password.length < 8) {
+      return Materialize.toast(
+        'Password must be at least 8 characters long',
+        3000
+      );
     }
 
-    if (!password || password.length < 8) {
+    if (!password || $password.length < 8) {
       return Materialize.toast(
         'Password must be at least 8 characters long',
         3000
@@ -43,7 +51,7 @@
 
     const options = { // req body
       contentType: 'application/json',
-      data: JSON.stringify({ firstName, lastName, email, password }),
+      data: JSON.stringify({ $firstName, $lastName, $email, $password }),
       dataType: 'json',
       type: 'POST',
       url: '/users'
@@ -80,10 +88,10 @@
       );
     }
 
-    if (!email) {
+    if (!email)
       return Materialize.toast(
         'Email must not be blank',
-        3000
+        300
       );
     }
 

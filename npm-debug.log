@@ -1,8 +1,7 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/usr/local/Cellar/node/7.0.0/bin/node',
 1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'run',
-1 verbose cli   'nf' ]
+1 verbose cli   'start' ]
 2 info using npm@3.10.8
 3 info using node@v7.0.0
 4 verbose stack Error: Failed to parse json
@@ -17,7 +16,7 @@
 4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:412:12)
 5 verbose cwd /Users/rsstdd/Projects/aircraft_project
 6 error Darwin 15.6.0
-7 error argv "/usr/local/Cellar/node/7.0.0/bin/node" "/usr/local/bin/npm" "run" "nf"
+7 error argv "/usr/local/Cellar/node/7.0.0/bin/node" "/usr/local/bin/npm" "start"
 8 error node v7.0.0
 9 error npm  v3.10.8
 10 error file /Users/rsstdd/Projects/aircraft_project/package.json

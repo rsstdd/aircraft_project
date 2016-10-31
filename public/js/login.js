@@ -3,42 +3,42 @@
   $('#register').click((event) => {
     event.preventDefault();
 
-    const firstName = $('#firstName').val().trim();
-    const lastName = $('#lastName').val().trim();
-    const email = $('#email').val().trim();
-    const password = $('#password').val();
+    const $firstName = $('#firstName').val().trim();
+    const $lastName = $('#lastName').val().trim();
+    const $email = $('#email').val().trim();
+    const $password = $('#password').val();
 
-    if (!password || password.length < 8) {
+    if (!$firstName) {
       return Materialize.toast(
-        'Password must be at least 8 characters long',
+        'First Name required here',
         3000
       );
     }
 
-    if (!firstName) {
-      return Materialize.toast(
-        'First Name required',
-        3000
-      );
-    }
-
-    if (!lastName) {
+    if (!$lastName) {
       return Materialize.toast(
         'Last Name required',
         3000
       );
     }
 
-    if (!email) {
+    if (!$email) {
       return Materialize.toast(
         'Email must not be blank',
         3000
       );
     }
 
+    if (!$password || password.length < 8) {
+      return Materialize.toast(
+        'Password must be at least 8 characters long',
+        3000
+      );
+    }
+
     const options = {
       contentType: 'application/json',
-      data: JSON.stringify({ firstName, lastName, email, password }),
+      data: JSON.stringify({ $firstName, $lastName, $email, $password }),
       dataType: 'json',
       type: 'POST',
       url: '/token'
@@ -56,36 +56,37 @@
   $('#logIn').click((event) => {
     event.preventDefault();
 
-    const firstName = $('#firstName').val().trim();
-    const lastName = $('#lastName').val().trim();
-    const email = $('#email').val().trim();
-    const password = $('#password').val();
+    console.log('hello');
+    const $firstName = $('#firstName').val().trim();
+    const $lastName = $('#lastName').val().trim();
+    const $email = $('#email').val().trim();
+    const $password = $('#password').val();
 
-    if (!firstName) {
+    if (!$firstName) {
       return Materialize.toast(
         'First Name required',
         3000
       );
     }
 
-    if (!lastName) {
+    if (!$lastName) {
       return Materialize.toast(
         'Last Name required',
         3000
       );
     }
 
-    if (!email) {
+    if (!$email) {
       return Materialize.toast('Email must not be blank', 3000);
     }
 
-    if (!password) {
+    if (!$password) {
       return Materialize.toast('Password must not be blank', 3000);
     }
 
     const options = {
       contentType: 'application/json',
-      data: JSON.stringify({ email, password }),
+      data: JSON.stringify({ $email, $password }),
       dataType: 'json',
       type: 'POST',
       url: '/token'
