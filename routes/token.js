@@ -23,10 +23,10 @@ router.get('/token', authorize, (req, res) => {
   res.send(res.verify);
 });
 
-router.post('/token', ev(validations.post), (req, res, next) => {
-  const { firstName, lastName, email, password } = req.body;
+ // ev(validations.post),
 
-  console.log(firstName, lastName, email, password);
+router.post('/token', (req, res, next) => {
+  const { email, password } = req.body;
 
   let user;
 
@@ -68,6 +68,7 @@ router.post('/token', ev(validations.post), (req, res, next) => {
 
 router.delete('/token', (req, res, _next) => {
   res.clearCookie('token');
+  res.status(200);
   res.send(true);
 });
 

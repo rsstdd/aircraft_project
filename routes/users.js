@@ -21,6 +21,7 @@ const authorize = function(req, res, next) {
 
 router.post('/users', authorize, ev(validations.post), (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
+  console.log(firstName, lastName, email, password);
 
   knex('users')
     .where('email', email)
