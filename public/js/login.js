@@ -78,5 +78,5 @@ You're now logged in. You can now add tweets to your favorites.`,
       .fail(($xhr) => {
         console.log($xhr.responseText);
       });
- });
+  });
 })();
