@@ -1,6 +1,6 @@
 # The aircraft_project
 
-This Website was inspired
+My fondest childhood memories are flying with my father in his Piper J3 Cub, which from an early age cultivated my sense of curiosity, wonder, and appreciation for antique aircraft. This project is a tribute that experience, those aircraft, and my father's continued support as I pursue my curiosities. Mostly, I created this project to explore building a RESTful Express web app.  
 
 ![Home View](./READMEIMG/aircraft_home.png?raw=true "Home")
 
@@ -13,11 +13,14 @@ This Website was inspired
 
 * Node.js
 * Express
+* Express Validation
 * postgreSQL
 * Knex.js
 * Materialize CSS
 * Boom
 * body-parser
 * cookie-parser
-* nodemailer
 * request
+* humps
+* jsonwebtoken
+* Joi
