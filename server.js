@@ -7,6 +7,8 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 
+console.log('here');
+
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
