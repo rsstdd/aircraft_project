@@ -435,3 +435,15 @@ exports.seed = function(knex, _Promise) {
       });
     });
 };
+
+
+//
+// $('.mw-headline').filter(function() {
+//   const data = $(this);
+//
+//   category = data.text();
+//
+//   console.log(category);
+//
+//   json.category = category;
+// });
