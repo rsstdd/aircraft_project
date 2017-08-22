@@ -6,22 +6,15 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const app = express();
-
-console.log('here');
-
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+const path = require('path');
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-const path = require('path');
-
 app.use(express.static(path.join('public')));
-
 app.disable('x-powered-by');
-
-const morgan = require('morgan');
 
 switch (app.get('env')) {
   case 'development':
@@ -73,7 +66,6 @@ app.use((err, _req, res, _next) => {
       .send(err.errors[0].messages[0]);
   }
 
-  // eslint-disable-next-line no-console
   console.error(err.stack);
   res.sendStatus(500);
 });
@@ -82,7 +74,6 @@ const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   if (app.get('env') !== 'test') {
-    // eslint-disable-next-line no-console
     console.log(`Listening on port ${port}`);
   }
 });
